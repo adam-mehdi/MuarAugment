@@ -4,6 +4,8 @@
  
 # MuarAugment     
  
+</div>
+
 ## Description   
 What it does   
 
