@@ -5,17 +5,21 @@ import kornia.augmentation as K
 import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms.functional as TF
+import muar
 
 def transform_show(image: Union[np.ndarray, torch.Tensor], 
-                   transform: K.augmentation, 
+                   transform: Union[K.augmentation, muar.BatchRandAugment] 
                    max_rows: int = 2, 
                    max_cols: int = 2, 
                    figsize: tuple = (12.,12.), 
                    denorm: bool = False,
                    mean_for_denorm: Union[tuple, float] = None,
-                   std_for_denorm: Union[tuple, float] = None):
+                   std_for_denorm: Union[tuple, float] = None
+                  ):
     """
-    Displays grid containing `image` augmented with `transform`.
+    Displays grid containing `image` augmented with `transform`. Denormalize
+    according to `mean_for_denorm` and `std_for_denorm` after transform if 
+    `denorm` == True.
     """
     
     if not isinstance(image, torch.Tensor): image = TF.to_tensor(image)
