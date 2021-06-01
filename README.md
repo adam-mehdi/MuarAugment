@@ -2,42 +2,29 @@
 
 <div align="center">    
  
-# MuarAugment     
- 
+# <img src="muar-final-design-2.JPG" width="60" height="35"/>     MuarAugment  
+
 </div>
 
 ## Description   
-What it does   
+MuarAugment is a package providing the easiest way to a state-of-the-art data augmentation pipeline. 
 
-## How to run   
-First, install dependencies   
-```bash
-# clone project   
-git clone https://github.com/YourGithubName/deep-learning-project-template
-
-# install project   
-cd deep-learning-project-template 
-pip install -e .   
-pip install -r requirements.txt
- ```   
- Next, navigate to any file and run it.   
- ```bash
-# module folder
-cd project
-
-# run module (example: mnist as your main contribution)   
-python lit_classifier_main.py    
+## How to use   
+You can install `MuarAugment` via PIP:  
+```python
+!pip install muaraugment
 ```
 
-## Imports
-This project is setup as a package which means you can now easily import any file into any other file like so:
+## Example
 ```python
-from project.datasets.mnist import mnist
-from project.lit_classifier_main import LitClassifier
-from pytorch_lightning import Trainer
+from muar.augmentations import BatchRandAugment, MuAugment
+
+# muar augmentations
+rand_augment = BatchRandAugment(N_TFMS=3, MAGN=4)
+mu_augment = MuAugment(rand_augment, N_COMPS=4, SELECTED=2)
 
 # model
-model = LitClassifier()
+model = LitClassifier(mu_augment)
 
 # data
 train, val, test = mnist()
@@ -45,17 +32,7 @@ train, val, test = mnist()
 # train
 trainer = Trainer()
 trainer.fit(model, train, val)
-
-# test using the best model!
-trainer.test(test_dataloaders=test)
 ```
 
-### Citation   
-```
-@article{YourName,
-  title={Your Title},
-  author={Your team},
-  journal={Location},
-  year={Year}
-}
-```   
+### Tutorials   
+- [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20)
