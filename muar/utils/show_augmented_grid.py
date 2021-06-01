@@ -7,7 +7,7 @@ import torch
 import torchvision.transforms.functional as TF
 import muar
 
-def transform_show(image: Union[np.ndarray, torch.Tensor], 
+def show_augmented_grid(image: Union[np.ndarray, torch.Tensor], 
                    transform: Union[K.augmentation, muar.BatchRandAugment] 
                    max_rows: int = 2, 
                    max_cols: int = 2, 
