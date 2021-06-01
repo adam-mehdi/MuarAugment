@@ -9,8 +9,8 @@ import muar
 
 def show_augmented_grid(image: Union[np.ndarray, torch.Tensor], 
                         transform: Union[K.augmentation, muar.BatchRandAugment] 
-                        rows: int = 2, 
-                        cols: int = 2, 
+                        rows: int = 3, 
+                        cols: int = 3, 
                         figsize: tuple = (12.,12.), 
                         denorm: bool = False,
                         mean_for_denorm: Union[tuple, float] = None,
