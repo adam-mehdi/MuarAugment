@@ -9,8 +9,8 @@ import muar
 
 def show_augmented_grid(image: Union[np.ndarray, torch.Tensor], 
                         transform: Union[K.augmentation, muar.BatchRandAugment] 
-                        max_rows: int = 2, 
-                        max_cols: int = 2, 
+                        rows: int = 2, 
+                        cols: int = 2, 
                         figsize: tuple = (12.,12.), 
                         denorm: bool = False,
                         mean_for_denorm: Union[tuple, float] = None,
@@ -23,17 +23,17 @@ def show_augmented_grid(image: Union[np.ndarray, torch.Tensor],
     """
     
     if not isinstance(image, torch.Tensor): image = TF.to_tensor(image)
-    xb = image[None].repeat(max_rows*max_cols, 1, 1, 1)
+    xb = image[None].repeat(rows*cols, 1, 1, 1)
     out = tfm(xb)
     if denorm:
         out = K.Denormalize(mean=torch.tensor(mean_for_denorm), 
                             std=torch.tensor(std_for_denorm))(out)
     images = [image for image in out]
-    fig, axes = plt.subplots(nrows=max_rows, ncols=max_cols, figsize=(16.,16.))
+    fig, axes = plt.subplots(nrows=rows, ncols=cols, figsize=(16.,16.))
     for idx, image in enumerate(images):
         image = TF.to_pil_image(image)
-        row = idx // max_cols
-        col = idx % max_cols
+        row = idx // cols
+        col = idx % cols
         axes[row, col].axis("off")
         axes[row, col].imshow(image, cmap="gray", aspect="auto")
     plt.subplots_adjust(wspace=.025, hspace=.025)
