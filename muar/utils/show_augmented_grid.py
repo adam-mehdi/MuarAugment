@@ -29,7 +29,7 @@ def show_augmented_grid(image: Union[np.ndarray, torch.Tensor],
         out = K.Denormalize(mean=torch.tensor(mean_for_denorm), 
                             std=torch.tensor(std_for_denorm))(out)
     images = [image for image in out]
-    fig, axes = plt.subplots(nrows=rows, ncols=cols, figsize=(16.,16.))
+    fig, axes = plt.subplots(nrows=rows, ncols=cols, figsize=figsize)
     for idx, image in enumerate(images):
         image = TF.to_pil_image(image)
         row = idx // cols
