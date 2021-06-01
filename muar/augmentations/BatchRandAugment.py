@@ -63,7 +63,7 @@ class BatchRandAugment(nn.Module):
                              K.RandomMixUp(p=1)]
 
         self.use_resize = use_resize
-        if use_resize:
+        if use_resize is not None:
             assert len(image_size) == 2, 'Invalid `image_size`. Must be a tuple of form (h, w)'
             self.resize_list = [K.RandomResizedCrop(image_size),
                                 K.RandomCrop(image_size),
