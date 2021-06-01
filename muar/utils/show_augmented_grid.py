@@ -8,14 +8,14 @@ import torchvision.transforms.functional as TF
 import muar
 
 def show_augmented_grid(image: Union[np.ndarray, torch.Tensor], 
-                   transform: Union[K.augmentation, muar.BatchRandAugment] 
-                   max_rows: int = 2, 
-                   max_cols: int = 2, 
-                   figsize: tuple = (12.,12.), 
-                   denorm: bool = False,
-                   mean_for_denorm: Union[tuple, float] = None,
-                   std_for_denorm: Union[tuple, float] = None
-                  ):
+                        transform: Union[K.augmentation, muar.BatchRandAugment] 
+                        max_rows: int = 2, 
+                        max_cols: int = 2, 
+                        figsize: tuple = (12.,12.), 
+                        denorm: bool = False,
+                        mean_for_denorm: Union[tuple, float] = None,
+                        std_for_denorm: Union[tuple, float] = None
+                       ):
     """
     Displays grid containing `image` augmented with `transform`. Denormalize
     according to `mean_for_denorm` and `std_for_denorm` after transform if 
