@@ -7,7 +7,7 @@
 </div>
 
 ## Description   
-MuarAugment is a package providing the easiest way to a state-of-the-art data augmentation pipeline. 
+MuarAugment is a package providing the easiest way to a state-of-the-art data augmentation pipeline.
 
 ## How to use   
 You can install `MuarAugment` via PIP:  
@@ -15,7 +15,7 @@ You can install `MuarAugment` via PIP:
 !pip install muaraugment
 ```
 
-## Example
+## Example (temp: tutorials and working examples coming soon)
 ```python
 from muar.augmentations import BatchRandAugment, MuAugment
 
