@@ -1,10 +1,12 @@
 import kornia.augmentation as K
 
 def kornia_list(MAGN):
+    """
+    Returns standard list of kornia transforms, each with magnitude `MAGN`.
+    """
     transform_list = [
                 # SPATIAL
                 K.RandomHorizontalFlip(p=1),
-                K.RandomVerticalFlip(p=1),
                 K.RandomRotation(degrees=90., p=1),
                 K.RandomAffine(degrees=MAGN*5.,shear=MAGN/5,translate=MAGN/20, p=1),
                 K.RandomPerspective(distortion_scale=MAGN/25, p=1),
