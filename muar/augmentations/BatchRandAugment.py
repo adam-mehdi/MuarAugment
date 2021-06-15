@@ -44,7 +44,7 @@ class BatchRandAugment(nn.Module):
             image_size (tuple): Final size after applying batch-wise resize transforms.
             use_mix (int): Label mixing transform to apply. Options:
                 None: Don't use.
-                0: CutMix
+                0: CutMix <cutmix not implemented yet>
                 1: MixUp
             mix_p (float): probability of applying the mix transform on a batch
                            given `use_mix` is not None.
