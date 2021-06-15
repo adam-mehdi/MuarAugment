@@ -4,7 +4,7 @@ import torch
 from torch import nn
 import pytorch_lightning as pl
 
-from muar.transforms import BatchRandAugment
+from muar.augmentations import BatchRandAugment
 from muar.loss import MixUpCrossEntropy
 
 
