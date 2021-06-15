@@ -13,5 +13,6 @@ setup(
     url='https://github.com/adam-mehdi/MuarAugment',
     install_requires=['pytorch-lightning', 'kornia'],
     packages=find_packages(where='muar'),
+    package_dir={'': 'muar'}
 )
 
