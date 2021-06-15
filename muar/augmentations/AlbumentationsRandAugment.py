@@ -1,5 +1,4 @@
 import numpy as np
-import albumentations as A
 from muar.transform_lists import albumentations_list
 
 class RandAugmentAlbumentations:
