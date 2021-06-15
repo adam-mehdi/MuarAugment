@@ -1,6 +1,12 @@
 import albumentations as A
 
-def albumentations_list(MAGN):
+def albumentations_list(MAGN: int = 4):
+    """
+    Returns standard list of albumentations transforms, each of mangitude `MAGN`.
+    
+    Args:
+        MAGN (int): Magnitude of each transform in the returned list.
+    """
     M = MAGN
     transform_list = [
         # PIXEL-LEVEL
