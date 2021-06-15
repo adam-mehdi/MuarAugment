@@ -11,6 +11,34 @@ from muar.transform_lists import kornia_list
 
 
 class BatchRandAugment(nn.Module):
+    """
+    Image augmentation pipeline that applies a composition of `N_TFMS` transforms 
+    each of magnitude `MAGN` sampled uniformly at random from `transform_list` with 
+    optional batch resizing and label mixing transforms.
+
+    Args:
+        N_TFMS (int): Number of transformations sampled for each composition,
+                      excluding resize or label mixing transforms.      <N in paper>
+        MAGN (int): Magnitude of augmentation applied. Ranges from [0, 10] with 
+                    10 being the max magnitude.                         <M in paper>
+        mean (tuple, torch.Tensor): Mean of images after normalized in range [0,1]
+        std (tuple, torch.Tensor): Mean of images after normalized in range [0,1]
+        transform_list (list): List of transforms to sample from. Default list
+                               provided if not specified.
+        use_resize (int): Batch-wise resize transform to apply. Options:
+            None: Don't use.
+            0: RandomResizedCrop
+            1: RandomCrop
+            2: CenterCrop
+            3: Randomly select a resize transform per batch.
+        image_size (tuple): Final size after applying batch-wise resize transforms.
+        use_mix (int): Label mixing transform to apply. Options:
+            None: Don't use.
+            0: CutMix <cutmix not implemented yet>
+            1: MixUp
+        mix_p (float): probability of applying the mix transform on a batch
+                       given `use_mix` is not None.
+    """
     def __init__(self, 
                  N_TFMS: int, 
                  MAGN: int, 
@@ -21,34 +49,6 @@ class BatchRandAugment(nn.Module):
                  image_size: tuple = None,
                  use_mix: int = None,
                  mix_p: float = .5):
-        """
-        Image augmentation pipeline that applies a composition of `N_TFMS` transforms 
-        each of magnitude `MAGN` sampled uniformly at random from `transform_list` with 
-        optional batch resizing and label mixing transforms.
-        
-        Args:
-            N_TFMS (int): Number of transformations sampled for each composition,
-                          excluding resize or label mixing transforms.      <N in paper>
-            MAGN (int): Magnitude of augmentation applied. Ranges from [0, 10] with 
-                        10 being the max magnitude.                         <M in paper>
-            mean (tuple, torch.Tensor): Mean of images after normalized in range [0,1]
-            std (tuple, torch.Tensor): Mean of images after normalized in range [0,1]
-            transform_list (list): List of transforms to sample from. Default list
-                                   provided if not specified.
-            use_resize (int): Batch-wise resize transform to apply. Options:
-                None: Don't use.
-                0: RandomResizedCrop
-                1: RandomCrop
-                2: CenterCrop
-                3: Randomly select a resize transform per batch.
-            image_size (tuple): Final size after applying batch-wise resize transforms.
-            use_mix (int): Label mixing transform to apply. Options:
-                None: Don't use.
-                0: CutMix <cutmix not implemented yet>
-                1: MixUp
-            mix_p (float): probability of applying the mix transform on a batch
-                           given `use_mix` is not None.
-        """
         super().__init__()
         
         self.N_TFMS, self.MAGN = N_TFMS, MAGN
