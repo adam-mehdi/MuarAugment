@@ -1,8 +1,11 @@
 import kornia.augmentation as K
 
-def kornia_list(MAGN):
+def kornia_list(MAGN: int = 4):
     """
     Returns standard list of kornia transforms, each with magnitude `MAGN`.
+    
+    Args:
+        MAGN (int): Magnitude of each transform in the returned list.
     """
     transform_list = [
                 # SPATIAL
