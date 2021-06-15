@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='MuarAugment',
-    version='1.0.1',
+    version='1.1.0',
     description='State-of-the-art data augmentation search algorithms in PyTorch',
     long_description=README,
     long_description_content_type="text/markdown",
