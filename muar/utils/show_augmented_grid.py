@@ -8,7 +8,7 @@ import torchvision.transforms.functional as TF
 import muar
 
 def show_augmented_grid(image: Union[np.ndarray, torch.Tensor], 
-                        transform: Union[K.augmentation, muar.BatchRandAugment] 
+                        transform: Union[K.augmentation, muar.augmentations.BatchRandAugment],
                         rows: int = 3, 
                         cols: int = 3, 
                         figsize: tuple = (12.,12.), 
