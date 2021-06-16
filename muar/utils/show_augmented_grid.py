@@ -8,7 +8,7 @@ import torchvision.transforms.functional as TF
 import muar
 
 def show_augmented_grid(image: Union[np.ndarray, torch.Tensor], 
-                        transform: Union[K.augmentation, muar.augmentations.BatchRandAugment],
+                        transform,
                         rows: int = 3, 
                         cols: int = 3, 
                         figsize: tuple = (12.,12.), 
@@ -20,6 +20,8 @@ def show_augmented_grid(image: Union[np.ndarray, torch.Tensor],
     Displays grid containing `image` augmented with `transform`. Denormalize
     according to `mean_for_denorm` and `std_for_denorm` after transform if 
     `denorm` == True.
+    
+    `transform` can be a kornia aumentation or muar BatchRandAugment.
     """
     
     if not isinstance(image, torch.Tensor): image = TF.to_tensor(image)
