@@ -141,7 +141,7 @@ class AlbumentationsRandAugment:
         """
         
         if transform_list == None:
-                transform_list = albumentations_list(MAGN)
+            transform_list = albumentations_list(MAGN)
             
         self.transform_list = transform_list
         self.MAGN = MAGN
