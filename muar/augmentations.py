@@ -221,8 +221,8 @@ class MuAugment():
         if yb.device != self.device: yb = yb.to(self.device)
 
         if len(yb.shape) == 2: yb = yb.squeeze(1)
-        BS,N_CHANNELS = xb.shape[:2]
-        HEIGHT,WIDTH = self.image_size
+        BS,N_CHANNELS,HEIGHT,WIDTH = xb.shape
+        if self.image_size is not None: HEIGHT,WIDTH = self.image_size
         C_images = torch.zeros(self.C, BS, N_CHANNELS, HEIGHT, WIDTH, device=self.device)
 
         if self.transform.mix is not None:
