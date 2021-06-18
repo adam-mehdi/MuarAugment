@@ -132,7 +132,7 @@ class AlbumentationsRandAugment:
                 N_TFMS: int = 2, 
                 MAGN: int = 4, 
                 transform_list: list = None):
-         """
+        """
         Args:
             N_TFMS (int): Number of transformation in each composition.
             MAGN (int): Magnitude of augmentation applied.
