@@ -19,29 +19,52 @@ You can install `MuarAugment` via PIP:
 !pip install muaraugment
 ```
 
-## Example (temp: tutorials and working examples coming soon)
+## Examples
+
+Modify the training logic and train like normal.
+
+### In PyTorch Lightning
 ```python
 from muar.augmentations import BatchRandAugment, MuAugment
 
-# muar augmentations
-rand_augment = BatchRandAugment(N_TFMS=3, MAGN=4)
-mu_augment = MuAugment(rand_augment, N_COMPS=4, SELECTED=2)
+ class LitModule(pl.LightningModule):
+     def __init__(self, n_tfms, magn, mean, std, n_compositions, n_selected):
+        ...
+        rand_augment = BatchRandAugment(n_tfms, magn, mean, std)
+        self.mu_transform = MuAugment(rand_augment, n_compositions, n_selected)
 
-# model
-model = LitClassifier(mu_augment)
-
-# data
-train, val, test = mnist()
-
-# train
+    def training_step(self, batch, batch_idx):
+        self.mu_transform.setup(self)
+        input, target = self.mu_transform((batch['input'], batch['target']))
+        ...
+        
 trainer = Trainer()
-trainer.fit(model, train, val)
+trainer.fit(model, datamodule)
 ```
 
-### Tutorials   
-- [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20)
+### In pure PyTorch
+```python
+from muar.augmentations import BatchRandAugment, MuAugment
 
-### Papers Referenced
+def train_fn(model):
+
+    rand_augment = BatchRandAugment(n_tfms, magn, mean, std)
+    mu_transform = MuAugment(rand_augment, n_compositions, n_selected)
+    
+    for epoch in range(N_EPOCHS):
+        for i,batch in enumerate(train_dataloader):
+            mu_transform.setup(model)
+            input, target = self.mu_transform(batch)
+            
+train_fn(model)
+```
+
+See the colab notebook tutorials for more detail on implementing MuarAugment.
+
+## Tutorials   
+1. [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20) (*Medium*)
+
+## Papers Referenced
 1. Cubuk, Ekin et al. "RandAugment: Practical data augmentation with no separate search," 2019, [arXiv](http://arxiv.org/abs/1909.13719).
 2. Wu, Sen et al. "On the Generalization Effects of Linear Transformations in Data Augmentation," 2020, [arXiv](https://arxiv.org/abs/2005.00695).
 3. Riba, Edgar et al. "Kornia: an Open Source Differentiable Computer Vision Library for PyTorch," 2019, [arXiv](https://arxiv.org/abs/1910.02190).
