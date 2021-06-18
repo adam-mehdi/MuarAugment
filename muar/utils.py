@@ -11,7 +11,6 @@ import kornia
 import kornia.augmentation as K
 from kornia.enhance import denormalize
 
-import muar
 
 ################################################### tensor2pil ################################
 
