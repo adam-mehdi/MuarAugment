@@ -9,7 +9,7 @@
 ## Description   
 MuarAugment provides the easiest way to a state-of-the-art data augmentation pipeline. 
 
-It adapts the leading pipeline search algorithms, RandAugment<sup>[1]</sup> and the model uncertainty-based augmentation scheme<sup>[2]</sup> (called MuAugment here), and modifies them to work batch-wise, on the GPU. Kornia and albumentations are used for batch-wise and item-wise transforms respectively.
+It adapts the leading pipeline search algorithms, RandAugment<sup>[1]</sup> and the model uncertainty-based augmentation scheme<sup>[2]</sup> (called MuAugment here), and modifies them to work batch-wise, on the GPU. Kornia<sup>[3]</sup> and albumentations are used for batch-wise and item-wise transforms respectively.
 
 If you are looking to quickly obtain the SOTA data augmentation pipelines without the conventional trial-and-error, MuarAugment is the package for you.
 
