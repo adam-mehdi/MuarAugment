@@ -76,7 +76,7 @@ class BatchRandAugment(nn.Module):
         self.normalize = K.Normalize(mean, std)
 
         self.transform_list = transform_list    
-        if transform_list == None: self.transform_list = kornia_list(MAGN)
+        if transform_list is None: self.transform_list = kornia_list(MAGN)
         
     def setup(self):
         if self.use_resize == 3:
