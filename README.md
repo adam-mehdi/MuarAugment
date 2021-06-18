@@ -63,7 +63,7 @@ See the colab notebook tutorials for more detail on implementing MuarAugment.
 
 ## Tutorials   
 1. [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20) (*Medium*)
-2. [MuAugment tutorial and implementation in a classification task](https://github.com/adam-mehdi/MuarAugment/blob/master/MuAugmentTutorial.ipynb) (*Colab Notebook*)
+2. [MuAugment tutorial and implementation in a classification task](https://colab.research.google.com/drive/1c-Zq85kteer5FGpT3a4IujoAUzAquu1-?authuser=2#scrollTo=39OBGWKgzhbR) (*Colab Notebook*)
 
 ## Papers Referenced
 1. Cubuk, Ekin et al. "RandAugment: Practical data augmentation with no separate search," 2019, [arXiv](http://arxiv.org/abs/1909.13719).
