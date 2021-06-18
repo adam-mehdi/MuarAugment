@@ -59,7 +59,7 @@ def train_fn(model):
 train_fn(model)
 ```
 
-See the colab notebook tutorials for more detail on implementing MuarAugment.
+See the colab notebook tutorials (#2) for more detail on implementing MuarAugment.
 
 ## Tutorials   
 1. [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20) (*Medium*)
