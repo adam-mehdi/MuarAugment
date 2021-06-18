@@ -200,9 +200,9 @@ class MuAugment():
         self.model = model
         self.rand_augment.setup()
         
-        self.transform = rand_augment
-        self.N, self.M = rand_augment.N_TFMS, rand_augment.MAGN
-        self.image_size = rand_augment.image_size
+        self.transform = self.rand_augment
+        self.N, self.M = self.rand_augment.N_TFMS, self.rand_augment.MAGN
+        self.image_size = self.rand_augment.image_size
         
         self.loss = MixUpCrossEntropy(reduction=False)
 
