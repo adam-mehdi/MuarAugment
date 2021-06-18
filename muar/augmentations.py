@@ -139,8 +139,7 @@ class AlbumentationsRandAugment:
             tranform: List of K transformations to sample from.
         """
         
-        if transform_list == None:
-            transform_list = albumentations_list(MAGN)
+        if transform_list is None: transform_list = albumentations_list(MAGN)
             
         self.transform_list = transform_list
         self.MAGN = MAGN
