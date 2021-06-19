@@ -21,7 +21,7 @@ You can install `MuarAugment` via PIP:
 
 ## Examples
 
-Modify the training logic and train like normal.
+For `MuAugment`, simply modify the training logic and train like normal.
 
 ### In PyTorch Lightning
 ```python
@@ -59,11 +59,40 @@ def train_fn(model):
 train_fn(model)
 ```
 
-See the colab notebook tutorials (#1, #2) for more detail on implementing MuarAugment.
+See the colab notebook tutorial (#1) for more detail on implementing `MuAugment`.
+
+### RandAugment using Albumentations
+
+`MuarAugment` also contains a straightforward implementation of RandAugment using Albumentations:
+```python
+class RandAugmentDataset(Dataset):
+    def __init__(self, N_TFMS=0, MAGN=0, stage='train', ...):
+        ...
+        if stage == 'train': 
+            self.rand_augment = AlbumentationsRandAugment(N_TFMS, MAGN)
+        else: self.rand_augment = None
+
+    def __getitem__(self, idx):
+        ...
+        transform = get_transform(self.rand_augment, self.stage, self.size)
+        augmented = transform(image=image)['image']
+        ...
+
+def get_transform(rand_augment, stage='train', size=(28,28)):
+    if stage == 'train':
+        resize_tfm = [A.Resize(*size)]
+        rand_tfms = rand_augment() # returns a list of transforms
+        tensor_tfms = [A.Normalize(), ToTensorV2()]
+        return A.Compose(resize_tfm + rand_tfms + tensor_tfms)
+    ...
+```    
+
+See the colab notebook tutorial (#2) for more detail on `AlbumentationsRandAugment`.
 
 ## Tutorials   
 1. [MuAugment tutorial and implementation in a classification task](https://github.com/adam-mehdi/MuarAugment/blob/master/MuAugmentTutorial.ipynb) (*Colab Notebook*)
-2. [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20) (*Medium*)
+2. [RandAugment tutorial in an end-to-end pipeline](https://github.com/adam-mehdi/MuarAugment/blob/master/RandAugmentTutorial.ipynb) (*Colab Notebook*)
+3. [Overview of data augmentation policy search algorithms](https://adam-mehdi23.medium.com/automatic-data-augmentation-an-overview-and-the-sota-109ffbf43a20) (*Medium*)
 
 ## Papers Referenced
 1. Cubuk, Ekin et al. "RandAugment: Practical data augmentation with no separate search," 2019, [arXiv](http://arxiv.org/abs/1909.13719).
