@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='MuarAugment',
-    version='1.1.0',
+    version='1.1.1',
     description='State-of-the-art data augmentation search algorithms in PyTorch',
     long_description=README,
     long_description_content_type="text/markdown",
