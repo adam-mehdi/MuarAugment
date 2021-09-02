@@ -7,7 +7,7 @@
 </div>
 
 ## Description   
-MuarAugment is the easiest way to a state-of-the-art data augmentation pipeline. Neural nets learn most from data they struggle with. MuarAugment uses the model to select the data augmentations that it has most trouble with, and uses only those most difficult data for training.
+MuarAugment is the easiest way to a state-of-the-art data augmentation pipeline. Neural nets learn most from data they struggle with. MuarAugment uses the model to select the data augmentations that it has most trouble with, and uses only those most difficult data for training. This has been shown empirically. Perhaps more difficult data reduces overfitting. Perhaps it exposes parts of the data distribution which the model did not see yet. Either way, MuarAugment works.
 
 It adapts the leading pipeline search algorithms, RandAugment<sup>[1]</sup> and the model uncertainty-based augmentation scheme<sup>[2]</sup> (called MuAugment here), and modifies them to work batch-wise, on the GPU. Kornia<sup>[3]</sup> and albumentations are used for batch-wise and item-wise transforms respectively.
 
