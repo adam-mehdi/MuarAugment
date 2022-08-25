@@ -11,7 +11,7 @@ setup(
     long_description=README,
     long_description_content_type="text/markdown",
     author='Adam Mehdi',
-    author_email='amehdi.25@dartmouth.edu',
+    author_email='adam.mehdi@columbia.edu',
     url='https://github.com/adam-mehdi/MuarAugment',
     install_requires=['pytorch-lightning', 'kornia'],
     packages=find_packages(exclude=("tests",))
