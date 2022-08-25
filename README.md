@@ -16,7 +16,7 @@ If you are seeking SOTA data augmentation pipelines without laborious trial-and-
 ## How to use   
 You can install `MuarAugment` via PIP:  
 ```python
-!pip install muaraugment
+!pip install git+https://github.com/adam-mehdi/MuarAugment.git
 ```
 
 ## Examples
